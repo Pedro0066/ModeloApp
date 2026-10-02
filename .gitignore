@@ -1,5 +1,11 @@
-/modeloapp/__pycache__/*
-/apps/categories/__pycache__/*
+# Cache do Python para qualquer pasta do projeto
+**/__pycache__/
+*.py[cod]
+
+# Ignorar migrações dos APPs específicos conforme o roteiro
 /apps/categories/migrations/*
-/apps/products/__pycache__/*
 /apps/products/migrations/*
+
+# Configurações do VSCode e SQLite
+.vscode/
+*.sqlite3
