@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CategoryForm
 from .models import Category
 
@@ -25,3 +25,21 @@ def list_categories(request):
         'categories': categories
     }
     return render(request, template_name, context)
+
+def edit_category(request, id_category):
+    template_name = 'categories/add_category.html'
+    context ={}
+    category = get_object_or_404(Category, id=id_category)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('categories:list_categories')
+    form = CategoryForm(instance=category)
+    context['form'] = form
+    return render(request, template_name, context)
+
+def delete_category(request, id_category):
+    category = Category.objects.get(id=id_category)
+    category.delete()
+    return redirect('categories:list_categories')
