@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls', namespace='core')),
     path('categorias/', include('categories.urls', namespace='categories')),
+    path('produtos/', include('products.urls', namespace='products')),
 ]
 
 # Configuração para servir arquivos de upload durante o desenvolvimento
