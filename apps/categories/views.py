@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from rest_framework import viewsets
 from .forms import CategoryForm
 from .models import Category
+from .serializer import CategorySerializer
 
 # Create your views here.
 
@@ -43,3 +45,7 @@ def delete_category(request, id_category):
     category = Category.objects.get(id=id_category)
     category.delete()
     return redirect('categories:list_categories')
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer  
