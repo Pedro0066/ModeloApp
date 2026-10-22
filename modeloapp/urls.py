@@ -25,6 +25,8 @@ urlpatterns = [
     path('categorias/', include('categories.urls', namespace='categories')),
     path('produtos/', include('products.urls', namespace='products')),
     path('redessociais/', include('socialnetworks.urls', namespace='socialnetworks')),
+    path('funcionarios/', include('employees.urls', namespace='employees')),
+    path('clientes/', include('clients.urls', namespace='clients')),
 ]
 
 # Configuração para servir arquivos de upload durante o desenvolvimento
