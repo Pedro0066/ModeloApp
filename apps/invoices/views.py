@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from invoices.models import Invoice
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -12,6 +13,7 @@ def create_invoice_for_order(order):
         number=invoice_number
     )
 
+@login_required(login_url='/contas/login/')     
 def view_invoice(request, invoice_id):
     template_name = 'invoices/view_invoice.html'
     invoice = get_object_or_404(Invoice, id=invoice_id)

@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import EmployeeForm
 from .models import Employee
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_employee(request):
     template_name = 'employees/add_employee.html'
     context = {}
@@ -17,6 +19,7 @@ def add_employee(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_employees(request):
     template_name = 'employees/list_employees.html'
     employees = Employee.objects.all()
@@ -25,6 +28,7 @@ def list_employees(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_employee(request, id_employee):
     template_name = 'employees/add_employee.html'
     context = {}
@@ -38,6 +42,7 @@ def edit_employee(request, id_employee):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_employee(request, id_employee):
     employee = get_object_or_404(Employee, id=id_employee)
     employee.delete()
