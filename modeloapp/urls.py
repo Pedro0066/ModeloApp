@@ -27,6 +27,9 @@ urlpatterns = [
     path('redessociais/', include('socialnetworks.urls', namespace='socialnetworks')),
     path('funcionarios/', include('employees.urls', namespace='employees')),
     path('clientes/', include('clients.urls', namespace='clients')),
+    path('pedidos/', include('orders.urls', namespace='orders')),
+    path('notas/', include('invoices.urls', namespace='invoices')),
+    path('contas/', include('accounts.urls', namespace='accounts')),
 ]
 
 # Configuração para servir arquivos de upload durante o desenvolvimento
